@@ -1,13 +1,229 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+::-webkit-scrollbar {
+    width: calc(100vw/200);
+  }
+  ::-webkit-scrollbar-track {
+    background: #333; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #19D897; 
+    border-radius: 20px;
+    transition: all ease-in-out;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #006666; 
+  }
+/* --------------------------- */
+body{
+    background: var(--background-color);
+    background-size: 200%;
+    animation: bg-animation 5s infinite alternate;
+    font-family:var(--font-family);
+    font-size:150%;
+    overflow-x: hidden;
+    color: var(--font-color);
+}
+@keyframes bg-animation {
+    0%{
+        background-position: left;
+    }
+    100%{
+        background-position: right;
+    }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container{
+    text-align: center;
 }
+/* --------------------------- */
+button{
+    font-family:var(--font-family);
+    border: none;
+    color: var(--font-color);
+    background:none;
+    display: inline-block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: larger;
+}
+button:hover{
+    cursor: pointer;
+}
+.back-btn{
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    top:50rem;
+    width: 25%;
+    margin: auto;
+}
+/* --------------------------- */
+.home-container{
+    position: relative;
+    background: var(--secondary-background-color);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.7px);
+    border-radius: 20px;
+    max-width:50%;
+    margin: auto;
+    padding-top:calc(100vw/7);
+    padding-bottom:calc(100vw/7);
+    top:calc(100vw/20);
+    margin-bottom: 100px;
+}
+
+/* --------------------------- */
+.tasks-container{
+    position: relative;
+    background: var(--secondary-background-color);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.7px);
+    border-radius: 20px;
+    max-width:50%;
+    margin: auto;
+    top:calc(100vw/20);
+    margin-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.task{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.task h5{
+    max-width: calc(100vw/4);
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.task-checker{
+    position: relative;
+    float: start;
+    align-items: flex-end;
+}
+/* --------------------------- */
+.nav-container {
+    padding: 10px;
+    overflow: hidden;
+    border-bottom: var(--font-color) 3.5px solid;
+    max-width: 50%;
+    margin: auto;
+    position: relative;
+    top:-30rem;
+}
+
+.nav-brand{
+    float: left;
+}
+.nav-item{
+    float: right;
+}
+
+.nav-toggler{
+    position: relative;
+    background: none;
+    top:-30rem;
+    font-size:larger;
+}
+.nav-toggler:hover{
+    cursor: pointer;
+}
+
+/* --------------------------- */
+a {
+    background:none;
+    display: inline-block;
+    color: var(--font-color);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+/* --------------------------- */
+textarea {
+    position: absolute;
+    font-family:var(--font-family);
+    width: 50%;
+    height: 40rem;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: var(--secondary-background-color);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.7px);
+    font-size: 16px;
+    color: var(--font-color);
+    resize:both;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    border:none;
+  }
+  textarea::-webkit-scrollbar {
+      width: 0.2px;
+    }
+    
+    textarea::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background: var(--secondary-background-color);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5.7px);
+    }
+    
+    textarea::-webkit-scrollbar-thumb {
+        background: var(--secondary-background-color);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5.7px);
+    }
+    /* ------------------------------------- */
+    input {
+        font-family:var(--font-family);
+        padding: 10px 10px;
+        margin-top:20px;
+        margin-bottom:20px;
+        width: 30%;
+        border:none;
+        background: whitesmoke;
+        border-radius: 5px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5.7px);
+    }
+    input:focus, textarea:focus, select:focus{
+        outline: none;
+    }
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 650px) {
+        textarea{
+            width: 80%;
+        }
+    }
+    
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 650px) {
+        textarea{
+            width: 80%;
+        }
+    }
+    
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    textarea{
+        width: 50%;
+    }
+    
+
+}
+

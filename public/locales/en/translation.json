@@ -1,0 +1,19 @@
+{
+    "Words":{
+        "Thank": "Thank you!"
+    },
+
+    "Custom":{
+        "Home": "Task Management is Important. Start Now!",
+        "Save_Note": "Save Note",
+        "Create_Task": "Create Task",
+        "Continue": "Go ->",
+        "Input_Username": "Enter Username",
+        "Input_Notes": "Enter Your Notes Here",
+        "Go_To_Notes":"Go To Notes ->",
+        "Back": "<- Go Back",
+        "Input_Title": "Enter Title",
+        "Input_Description": "Enter Description"
+    }
+
+}
