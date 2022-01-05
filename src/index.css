@@ -201,21 +201,33 @@ textarea {
         outline: none;
     }
     /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 650px) {
-        textarea{
-            width: 80%;
-        }
+@media only screen and (max-width: 650px) {
+    textarea{
+        width: 80%;
+    }
+    .nav-container {
+        padding: 10px;
+        max-width: 100%;
     }
     
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 650px) {
-        textarea{
-            width: 80%;
-        }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 650px) {
+    textarea{
+        width: 80%;
     }
-    
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px) {
+    .nav-container {
+        padding: 10px;
+        max-width: 80%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .nav-container {
+        max-width: 60%;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */

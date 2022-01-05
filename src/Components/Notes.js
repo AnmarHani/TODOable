@@ -1,12 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {motion} from 'framer-motion'
 import {Link} from 'react-router-dom'
 
 const Notes = (props) => {
+
+    const [note, setNote] = useState('')
+
+    const textHandler = (event) => {
+        props.setSaveNote(event.target.value)
+        setNote(event.target.value)
+    }
+
+    useEffect(() =>{
+        const notes = localStorage.getItem('Notes')
+        setNote(notes)
+    },[])
+
     return (
         <>
             <motion.textarea name="" id="" cols="30" rows="10" placeholder={props.translate("Custom.Input_Notes")} 
-                
+                onChange={textHandler}
+                value={note}
                 animate={{
                     marginTop: props.toggle ? "110px" : "-20px",
                     x:0,

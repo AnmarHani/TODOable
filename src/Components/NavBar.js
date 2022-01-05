@@ -12,8 +12,6 @@ const NavBar = (props) => {
         props.setToggle(prev => !prev)
     }
 
-
-
     return (
         <>
             <motion.nav 
@@ -71,6 +69,7 @@ const NavBar = (props) => {
                         scale:.85,
                     }}
                     class="nav-item"
+                    onClick={props.saveNoteHandler}
                     >
                         {props.translate("Custom.Save_Note")}
                     </motion.button>

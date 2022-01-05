@@ -25,27 +25,31 @@ function App() {
   const location = useLocation()
   const [toggle, setToggle] = useState(false)
   const [language, setLanguage] = useState(false)
+  const [tasks, setTasks] = useState([])
+  const [saveNote, setSaveNote] = useState('')
 
   const languageToggler = () => {
     setLanguage(prev => !prev)
+  }
+  
+  const saveNoteHandler = () => {
+    localStorage.setItem('Notes', saveNote)
+    console.log(localStorage.getItem('Notes'))
+  }
+  
+  
+  useEffect(()=>{
+    const response = axios.get(`AllTasks/`).then(response => setTasks(response.data.data))
     if(language){
-      i18n.changeLanguage("EN")
-      document.getElementsByTagName("html")[0].setAttribute("lang", "en");
-      document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
-    }else{
       document.getElementsByTagName("html")[0].setAttribute("lang", "ar");
       document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
       i18n.changeLanguage("AR")
+    }else{
+      i18n.changeLanguage("EN")
+      document.getElementsByTagName("html")[0].setAttribute("lang", "en");
+      document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
     }
-  }
-
-
-  const [tasks, setTasks] = useState([])
-
-  
-  useEffect(()=>{
-      const response = axios.get(`AllTasks/`).then(response => setTasks(response.data.data))
-  },[tasks])
+  },[language])
 
 
   const GlobalStyle = createGlobalStyle`
@@ -63,14 +67,14 @@ function App() {
     <>
       <GlobalStyle />
       <div className="container">
-          <NavBar translate={t} language={language} languageToggler={languageToggler} toggle={toggle} setToggle={setToggle} setTheme={setTheme} theme={theme}/>
+          <NavBar saveNoteHandler={saveNoteHandler} translate={t} language={language} languageToggler={languageToggler} toggle={toggle} setToggle={setToggle} setTheme={setTheme} theme={theme}/>
           <AnimatePresence>
             <Routes location={location} key={location.key}>
               <Route exact path="/" element={<Home translate={t} toggle={toggle}/>}/>
-              <Route exact path="/tasks" element={<Tasks tasks={tasks} translate={t} toggle={toggle}/>}/>
+              <Route exact path="/tasks" element={<Tasks tasks={tasks} setTasks={setTasks} translate={t} toggle={toggle}/>}/>
               <Route exact path="/tasks/:id" element={<Task translate={t} toggle={toggle}/>}/>
-              <Route exact path="/notes" element={<Notes translate={t} toggle={toggle}/>}/>
-              <Route exact path="/create-task" element={<CreateTask translate={t} toggle={toggle}/>}/>
+              <Route exact path="/notes" element={<Notes setSaveNote={setSaveNote} translate={t} toggle={toggle}/>}/>
+              <Route exact path="/create-task" element={<CreateTask translate={t} tasks={tasks} setTasks={setTasks} toggle={toggle}/>}/>
             </Routes>
           </AnimatePresence>
       </div>

@@ -24,6 +24,7 @@ const CreateTask = (props) => {
         const response = await axios.post(`AddTasks/`, data)
         if(response){
             navigate('/tasks')
+            props.setTasks([...props.tasks, response.data.data])
         }
     }
 

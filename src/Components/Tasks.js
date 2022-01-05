@@ -6,9 +6,12 @@ import axios from '../axios'
 const Tasks = (props) => {
     const [check, setCheck] = useState(false)
 
-    const checkToggler = async (id) => {
+    const checkToggler = async (task) => {
      setCheck(prev => !prev)
-     const response = await axios.delete(`DeleteTask/${id}/`)
+     const response = await axios.delete(`DeleteTask/${task.id}/`)
+     if(response){
+        props.setTasks(props.tasks.filter(({ id }) => id !== task.id));
+     }
     }
 
     return (
@@ -50,9 +53,10 @@ const Tasks = (props) => {
                             transition:{ease: "easeInOut"}
                         }}
                        className="task" key={task.id}>
-                           <Link to={`/tasks/${task.id}`} >
+                            <h5>{task.title}</h5>
+                            {/* <Link to={`/tasks/${task.id}`}>
                                 <h5>{task.title}</h5>
-                           </Link>
+                           </Link> */}
                            <motion.button
                                 whileHover={{
                                     background:"var(--btn-hover)",
@@ -70,7 +74,7 @@ const Tasks = (props) => {
                                     // duration:0.5, //for tween type
                                     stiffness: 100,//for spring type
                                 }}
-                                onClick={() => checkToggler(task.id)}
+                                onClick={() => checkToggler(task)}
                            >
                                 <i class="bi bi-check2-square task-checker"></i>
                             </motion.button>
