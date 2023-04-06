@@ -17,8 +17,9 @@
 - Framer Motion
 - React Router
 - Styled Components
+- Local storage as temporary database
 ## Backend
-- 
+- None
 ## Database
 - SQL | PostregSQL
 
